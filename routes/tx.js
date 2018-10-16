@@ -132,8 +132,8 @@ router.get('/:tx', function(req, res, next) {
         console.log(decoded.inputs[1])
         console.log(decoded.inputs[2])
         tx.internalGameId = decoded.inputs[0];
-        tx.gamers = decoded.inputs[1].toString();
-        tx.bet = decoded.inputs[2]
+        tx.gamers = decoded.inputs[1].toString(16);
+        tx.bet = decoded.inputs[2].toString(10);
         break;
       case "finishGame":
         tx.operation = "Finish game";
