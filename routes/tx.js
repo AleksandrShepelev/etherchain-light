@@ -128,8 +128,8 @@ router.get('/:tx', function(req, res, next) {
     switch (decoded.name) {
       case "createGame":
         tx.operation= "Create game";
-        tx.internalGameId = decoded.inputs[0].toString();
-        tx.gamers = decoded.inputs[1].toString();
+        tx.internalGameId = decoded.inputs[0];
+        tx.gamers = decoded.inputs[1];
         tx.bet = decoded.inputs[2]
         break;
       case "finishGame":
