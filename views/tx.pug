@@ -90,15 +90,18 @@ block content
     tr
       td Operation:
       td #{tx.operation}
-    tr
-      td Internal game ID:
-      td #{tx.internalGameId}
-    tr
-      td Gamers:
-      td #{tx.gamers}
-    tr
-      td Bet:
-      td #{tx.bet}
+    if tx.internalGameId
+      tr
+        td Internal game ID:
+        td #{tx.internalGameId}
+    if tx.gamers
+      tr
+        td Gamers:
+        td #{tx.gamers}
+    if tx.bet
+      tr
+        td Bet:
+        td #{tx.bet}
 
 
   a(href="/tx/raw/" + tx.hash) Raw Trace

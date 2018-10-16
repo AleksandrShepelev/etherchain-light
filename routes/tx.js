@@ -140,6 +140,14 @@ router.get('/:tx', function(req, res, next) {
         break;
       case "finishGame":
         tx.operation = "Finish game";
+        tx.gamers = ""
+        for (var i=0; i<decoded.inputs[1].length; i++) {
+          tx.gamers += decoded.inputs[1][i].toString(16);
+          if (i !== decoded.inputs[1].length - 1) {
+            tx.gamers += ", "
+          }
+        }
+        tx.internalGameId = decoded.inputs[0];
         break;
       case "transfer":
         tx.operation = "Transfer coins";
