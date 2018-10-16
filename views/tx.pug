@@ -115,6 +115,23 @@ block content
         td Amount of ClickCoins transferred:
         td #{tx.coinsTransferred}
 
+    if tx.refunders
+      tr
+        td Refund addresses:
+        td #{tx.refunders}
+    if tx.abusers
+      tr
+        td Abusers addresses:
+        td #{tx.abusers}
+    if tx.refundAmount
+      tr
+        td Amount of ClickCoins refunded:
+        td #{tx.refundAmount}
+    if tx.internalCaseId
+      tr
+        td Internal case ID:
+        td #{tx.internalCaseId}
+
   a(href="/tx/raw/" + tx.hash) Raw Trace
   h4 Internal Transactions
   table.table
