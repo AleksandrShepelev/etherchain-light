@@ -130,7 +130,8 @@ router.get('/:tx', function(req, res, next) {
         tx.operation= "Create game";
         tx.gamers = ""
         for (var i=0; i<decoded.inputs[1].length; i++) {
-          tx.gamers += decoded.inputs[1][i].toString(16);
+
+          tx.gamers +="," + decoded.inputs[1][i].toString(16);
         }
         tx.internalGameId = decoded.inputs[0];
         tx.bet = decoded.inputs[2].toString(10);
