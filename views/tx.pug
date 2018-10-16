@@ -84,6 +84,10 @@ block content
       td
         pre #{tx.input}
     tr
+      td Raw Decoded data:
+      td
+        pre #{tx.decoded}
+    tr
       td Operation:
       td
         pre #{tx.operation}
@@ -94,11 +98,11 @@ block content
     tr
       td Gamers:
       td
-      pre #{tx.users}
+      pre #{tx.gamers}
     tr
       td Bet:
       td
-        pre #{tx.amount}
+        pre #{tx.bet}
 
 
   a(href="/tx/raw/" + tx.hash) Raw Trace
