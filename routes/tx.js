@@ -192,9 +192,9 @@ router.get('/:tx', function(req, res, next) {
       }
 
       tx.abusers = ""
-      for (var i=0; i<decoded.inputs[1].length; i++) {
-        tx.abusers += decoded.inputs[1][i].toString(16);
-        if (i !== decoded.inputs[1].length - 1) {
+      for (var i=0; i<decoded.inputs[2].length; i++) {
+        tx.abusers += decoded.inputs[2][i].toString(16);
+        if (i !== decoded.inputs[2].length - 1) {
           tx.abusers += ", "
         }
       }
