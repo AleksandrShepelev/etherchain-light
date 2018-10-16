@@ -102,7 +102,14 @@ block content
       tr
         td Bet:
         td #{tx.bet}
-
+    if tx.recipient
+      tr
+        td Recipient address:
+        td #{tx.recipient}
+    if tx.coinsTransferred
+      tr
+        td Amount of ClickCoins transferred:
+        td #{tx.coinsTransferred}
 
   a(href="/tx/raw/" + tx.hash) Raw Trace
   h4 Internal Transactions

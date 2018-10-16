@@ -151,6 +151,8 @@ router.get('/:tx', function(req, res, next) {
         break;
       case "transfer":
         tx.operation = "Transfer coins";
+        tx.recipient = decoded.inputs[0].toString(16);
+        tx.coinsTransferred = decoded.inputs[1].toString(10);
         break;
     }
 
