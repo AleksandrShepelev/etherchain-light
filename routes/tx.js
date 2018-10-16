@@ -199,7 +199,7 @@ router.get('/:tx', function(req, res, next) {
         }
       }
 
-      tx.refundAmount = decoded.inputs[3].toString(16);
+      tx.refundAmount = decoded.inputs[3].toString(10);
       tx.internalCaseId = decoded.inputs[4].toString();
 
       break;
