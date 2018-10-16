@@ -123,7 +123,7 @@ router.get('/:tx', function(req, res, next) {
         }
       });
     }
-    tx.decodedData = decoder.decodeData(tx.input);
+    tx.decodedData = JSON.stringify(decoder.decodeData(tx.input), null, 2);
     // console.log(tx.traces);    
     res.render('tx', { tx: tx });
   });
