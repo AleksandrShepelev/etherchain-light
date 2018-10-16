@@ -89,20 +89,16 @@ block content
         pre #{tx.decoded}
     tr
       td Operation:
-      td
-        pre #{tx.operation}
+      td #{tx.operation}
     tr
       td Internal game ID:
-      td
-        pre #{tx.internalGameId}
+      td #{tx.internalGameId}
     tr
       td Gamers:
-      td
-        pre #{tx.gamers}
+      td #{tx.gamers}
     tr
       td Bet:
-      td
-        pre #{tx.bet}
+      td #{tx.bet}
 
 
   a(href="/tx/raw/" + tx.hash) Raw Trace
