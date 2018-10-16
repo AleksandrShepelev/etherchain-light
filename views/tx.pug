@@ -26,24 +26,6 @@ block content
           a(href="/account/" + tx.to) #{nameformatter.format(tx.to)}
         else
           | New Contract
-    tr
-      td Amount:
-      td #{ethformatter(tx.value)}
-    tr
-      td Nonce:
-      td #{tx.nonce}
-    tr
-      td Gas Limit:
-      td #{tx.gas}
-    tr
-      td Gas Used:
-      td #{tx.gasUsed}
-    tr
-      td Gas Price: 
-      td #{ethformatter(tx.gasPrice)}
-    tr
-      td Fee:
-      td #{ethformatter(tx.gasUsed * tx.gasPrice)}
     if tx.callInfo
       tr
         td Function Name:
@@ -102,9 +84,21 @@ block content
       td
         pre #{tx.input}
     tr
-      td DecodedData:
+      td Operation:
       td
-        pre #{tx.decodedData}
+        pre #{tx.operation}
+    tr
+      td Internal game ID:
+      td
+        pre #{tx.internalGameId}
+    tr
+      td Gamers:
+      td
+      pre #{tx.users}
+    tr
+      td Bet:
+      td
+        pre #{tx.amount}
 
 
   a(href="/tx/raw/" + tx.hash) Raw Trace

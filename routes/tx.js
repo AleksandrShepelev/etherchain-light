@@ -123,7 +123,24 @@ router.get('/:tx', function(req, res, next) {
         }
       });
     }
-    tx.decodedData = JSON.stringify(decoder.decodeData(tx.input), null, 2);
+    var decoded = decoder.decodeData(tx.input);
+
+    switch (decoded.name) {
+      case "createGame":
+        tx.operation= "Create game";
+        tx.internalGameId = decoded.inputs[0].toString();
+        tx.users = decoded.inputs[1].toString();
+        tx.amount = decoded.inputs[2]
+        break;
+      case "finishGame":
+        tx.operation = "Finish game";
+        break;
+      case "transfer":
+        tx.operation = "Transfer coins";
+        break;
+    }
+
+    tx.decodedData = JSON.stringify(decoded, null, 2);
     // console.log(tx.traces);    
     res.render('tx', { tx: tx });
   });
