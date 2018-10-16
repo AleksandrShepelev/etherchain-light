@@ -102,6 +102,10 @@ block content
       tr
         td Bet:
         td #{tx.bet}
+    if tx.sender
+      tr
+        td Sender address:
+        td #{tx.sender}
     if tx.recipient
       tr
         td Recipient address:
