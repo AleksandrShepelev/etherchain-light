@@ -62,8 +62,8 @@ router.get('/:account', function(req, res, next) {
       });
     }, function(source, callback) {
       
-      if (source) {
-        data.source = JSON.parse(source);
+      //if (source) {
+        //data.source = JSON.parse(source);
         /*
         data.contractState = [];
         if (!data.source.abi) {
@@ -91,9 +91,9 @@ router.get('/:account', function(req, res, next) {
           callback(err);
         });
         
-      } else {
-        callback();
-      }
+      //} else {
+      //  callback();
+      //}
 
 
     }, function(callback) {
