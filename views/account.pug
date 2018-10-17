@@ -10,10 +10,10 @@ block content
       td Balance:
       td #{ethformatter(account.balance)}
     if account.clickCoins
-    tr
-      td ClickCoins:
-      td #{ethformatter(account.clickCoins)}
-    if account.name
+      tr
+        td ClickCoins:
+        td #{ethformatter(account.clickCoins)}
+      if account.name
       tr
         td Name:
         td #{account.name}
