@@ -25,7 +25,7 @@ router.get('/:account', function(req, res, next) {
   
   async.waterfall([
     function(callback) {
-      clickCoinContract.methods.balanceOf(address).call(function (err, result) {
+      clickCoinContract.balanceOf(address).call(function (err, result) {
         callback(err, result)
       })
     },
