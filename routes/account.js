@@ -61,11 +61,11 @@ router.get('/:account', function(req, res, next) {
         callback(null, value);
       });
     }, function(source, callback) {
-      
+        data.contractState = [];
+
       //if (source) {
         //data.source = JSON.parse(source);
         /*
-        data.contractState = [];
         if (!data.source.abi) {
           return callback();
         }
