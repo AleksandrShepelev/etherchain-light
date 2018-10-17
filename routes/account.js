@@ -25,7 +25,7 @@ router.get('/:account', function(req, res, next) {
     function(callback) {
 //       clickCoinInstance.balanceOf(req.params.account, function (err, result) {
  //       console.log(result)
-        callback(err, result)
+        callback(null)
 //      });
     },
     function(result, callback) {
