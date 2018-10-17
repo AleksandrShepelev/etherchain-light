@@ -14,7 +14,7 @@ router.get('/:account', function(req, res, next) {
   var web3 = new Web3();
   web3.setProvider(config.provider);
 
-  const clickCoinContract = new web3.eth.Contract(
+  var clickCoinContract = web3.eth.contract(
     contractAbi,
     contractAddress
   );
