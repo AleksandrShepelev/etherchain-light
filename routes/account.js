@@ -26,10 +26,14 @@ router.get('/:account', function(req, res, next) {
   
   async.waterfall([
     function(callback) {
-       var result = clickCoinInstance.balanceOf(req.params.account);
-      console.log(result);
+       clickCoinInstance.balanceOf(req.params.account, function (err, result) {
+        console.log(result)
+        callback(err, result)
+      });
+    },
+    function(result, callback) {
       data.clickCoins = result;
-      callback()
+      callback(null);
     },
     function(callback) {
       web3.eth.getBlock("latest", false, function(err, result) {
