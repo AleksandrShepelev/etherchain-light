@@ -23,10 +23,11 @@ router.get('/:account', function(req, res, next) {
   
   async.waterfall([
     function(callback) {
-//       clickCoinInstance.balanceOf(req.params.account, function (err, result) {
- //       console.log(result)
+       clickCoinInstance.balanceOf(req.params.account).call(function (err, result) {
+        console.log(err);
+        console.log(result);
         callback(null);
-//      });
+      });
     },
     function(callback) {
 //      data.clickCoins = result;
