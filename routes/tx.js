@@ -130,7 +130,7 @@ router.get('/:tx', function(req, res, next) {
         tx.operation= "Create game";
         tx.gamers = ""
         for (var i=0; i<decoded.inputs[1].length; i++) {
-          tx.gamers += decoded.inputs[1][i].toString(16);
+          tx.gamers += "0x" + decoded.inputs[1][i].toString(16);
           if (i !== decoded.inputs[1].length - 1) {
             tx.gamers += ", "
           }
@@ -140,9 +140,9 @@ router.get('/:tx', function(req, res, next) {
         break;
       case "finishGame":
         tx.operation = "Finish game";
-        tx.gamers = ""
+        tx.gamers = "";
         for (var i=0; i<decoded.inputs[1].length; i++) {
-          tx.gamers += decoded.inputs[1][i].toString(16);
+          tx.gamers += "0x" + decoded.inputs[1][i].toString(16);
           if (i !== decoded.inputs[1].length - 1) {
             tx.gamers += ", "
           }
@@ -152,14 +152,14 @@ router.get('/:tx', function(req, res, next) {
       case "transfer":
         tx.operation = "Transfer coins";
         tx.sender = tx.from;
-        tx.recipient = decoded.inputs[0].toString(16);
+        tx.recipient = "0x" + decoded.inputs[0].toString(16);
         tx.coinsTransferred = decoded.inputs[1].toString(10);
         break;
     case "cancellationGame":
       tx.operation = "Cancel game";
-      tx.gamers = ""
+      tx.gamers = "";
       for (var i=0; i<decoded.inputs[1].length; i++) {
-        tx.gamers += decoded.inputs[1][i].toString(16);
+        tx.gamers += "0x" + decoded.inputs[1][i].toString(16);
         if (i !== decoded.inputs[1].length - 1) {
           tx.gamers += ", "
         }
@@ -168,9 +168,9 @@ router.get('/:tx', function(req, res, next) {
       break;
     case "cancellationGame":
       tx.operation = "Cancel game";
-      tx.gamers = ""
+      tx.gamers = "";
       for (var i=0; i<decoded.inputs[1].length; i++) {
-        tx.gamers += decoded.inputs[1][i].toString(16);
+        tx.gamers += "0x" + decoded.inputs[1][i].toString(16);
         if (i !== decoded.inputs[1].length - 1) {
           tx.gamers += ", "
         }
@@ -185,7 +185,7 @@ router.get('/:tx', function(req, res, next) {
 
       tx.refunders = ""
       for (var i=0; i<decoded.inputs[1].length; i++) {
-        tx.refunders += decoded.inputs[1][i].toString(16);
+        tx.refunders += "0x" + decoded.inputs[1][i].toString(16);
         if (i !== decoded.inputs[1].length - 1) {
           tx.refunders += ", "
         }
@@ -193,7 +193,7 @@ router.get('/:tx', function(req, res, next) {
 
       tx.abusers = ""
       for (var i=0; i<decoded.inputs[2].length; i++) {
-        tx.abusers += decoded.inputs[2][i].toString(16);
+        tx.abusers += "0x" + decoded.inputs[2][i].toString(16);
         if (i !== decoded.inputs[2].length - 1) {
           tx.abusers += ", "
         }
