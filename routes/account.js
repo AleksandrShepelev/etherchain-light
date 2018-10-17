@@ -14,10 +14,11 @@ router.get('/:account', function(req, res, next) {
   var web3 = new Web3();
   web3.setProvider(config.provider);
 
-  var clickCoinContract = web3.eth.contract(
-    contractAbi,
-    contractAddress
+  var ClickCoinContract = web3.eth.contract(
+    contractAbi
   );
+
+  var clickCoinInstance = ClickCoinContract.at(contractAddress);
   
   var db = req.app.get('db');
   
@@ -25,7 +26,7 @@ router.get('/:account', function(req, res, next) {
   
   async.waterfall([
     function(callback) {
-      clickCoinContract.balanceOf(req.params.account).call(function (err, result) {
+      clickCoinInstance.balanceOf(req.params.account).call(function (err, result) {
         callback(err, result)
       })
     },
