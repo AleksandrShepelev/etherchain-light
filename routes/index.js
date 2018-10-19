@@ -31,10 +31,15 @@ router.get('/', function(req, res, next) {
 
       async.whilst(
         function () {
-          console.log(counter);
-          console.log(numOfBlocksWithTxs);
+          console.log("counter: " +counter);
+          console.log("num of blocks with txs: " + numOfBlocksWithTxs);
+          console.log("lastblocknum: " + lastBlock.number);
+          console.log("blockCount: " + blockCount);
+          console.log((lastBlock.number - counter < 0));
+          console.log((numOfBlocksWithTxs > blockCount));
+
           console.log((lastBlock.number - counter < 0) || (numOfBlocksWithTxs > blockCount));
-          return ((lastBlock.number - counter < 0) || (numOfBlocksWithTxs > blockCount))
+          return (!((lastBlock.number - counter < 0) || (numOfBlocksWithTxs > blockCount)))
         },
         function(next) {
           web3.eth.getBlock(lastBlock.number - counter, true, function(err, block) {
