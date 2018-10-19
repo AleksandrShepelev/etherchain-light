@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
 
       var numOfBlocksWithTxs = 0;
 
-      async.whlist(
+      async.whilst(
         function () {
           return ((lastBlock.number - counter < 0) || (numOfBlocksWithTxs > blockCount))
         },
