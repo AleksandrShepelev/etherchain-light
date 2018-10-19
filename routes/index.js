@@ -25,26 +25,11 @@ router.get('/', function(req, res, next) {
         blockCount = lastBlock.number + 1;
       }
 
-      var counter = 0;
-
-      var numOfBlocksWithTxs = 0;
-
-      var blocks = [];
-      async.whilst(
-        function () {
-          return (!((lastBlock.number - counter < 0) || (numOfBlocksWithTxs >= blockCount)))
-        },
-        function(next) {
-          web3.eth.getBlock(lastBlock.number - counter, true, function(err, block) {
-            counter++;
-            if (block.transactions.length > 0) {
-            numOfBlocksWithTxs++;
-            blocks.push(block)
-          }
+      async.times(blockCount, function(n, next) {
+        web3.eth.getBlock(lastBlock.number - n, true, function(err, block) {
           next(err, block);
         });
-      },
-        function(err) {
+      }, function(err, blocks) {
         callback(err, blocks);
       });
     }
@@ -66,7 +51,6 @@ router.get('/', function(req, res, next) {
   });
 
 });
-
 
 router.get('/txblocks', function(req, res, next) {
 
