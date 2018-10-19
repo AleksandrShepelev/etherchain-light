@@ -29,6 +29,7 @@ router.get('/', function(req, res, next) {
 
       var numOfBlocksWithTxs = 0;
 
+      var blocks = [];
       async.whilst(
         function () {
           console.log("counter: " +counter);
@@ -38,19 +39,20 @@ router.get('/', function(req, res, next) {
           console.log((lastBlock.number - counter < 0));
           console.log((numOfBlocksWithTxs > blockCount));
 
-          console.log((lastBlock.number - counter < 0) || (numOfBlocksWithTxs > blockCount));
-          return (!((lastBlock.number - counter < 0) || (numOfBlocksWithTxs > blockCount)))
+          console.log((lastBlock.number - counter < 0) || (numOfBlocksWithTxs >= blockCount));
+          return (!((lastBlock.number - counter < 0) || (numOfBlocksWithTxs >= blockCount)))
         },
         function(next) {
           web3.eth.getBlock(lastBlock.number - counter, true, function(err, block) {
             counter++;
             if (block.transactions.length > 0) {
             numOfBlocksWithTxs++;
+            blocks.push(block)
           }
           next(err, block);
         });
       },
-        function(err, blocks) {
+        function(err) {
         callback(err, blocks);
       });
     }
