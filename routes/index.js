@@ -6,11 +6,11 @@ var Web3 = require('web3');
 
 
 router.get('/', function(req, res, next) {
-  
-  var config = req.app.get('config');  
+
+  var config = req.app.get('config');
   var web3 = new Web3();
   web3.setProvider(config.provider);
-  
+
   async.waterfall([
     function(callback) {
       web3.eth.getBlock("latest", false, function(err, result) {
@@ -18,18 +18,31 @@ router.get('/', function(req, res, next) {
       });
     }, function(lastBlock, callback) {
       var blocks = [];
-      
+
       var blockCount = 10;
-      
+
       if (lastBlock.number - blockCount < 0) {
         blockCount = lastBlock.number + 1;
       }
-      
-      async.times(blockCount, function(n, next) {
-        web3.eth.getBlock(lastBlock.number - n, true, function(err, block) {
+
+      var counter = 0;
+
+      var numOfBlocksWithTxs = 0;
+
+      async.whlist(
+        function () {
+          return ((lastBlock.number - counter < 0) || (numOfBlocksWithTxs > blockCount))
+        },
+        function(next) {
+          web3.eth.getBlock(lastBlock.number - counter, true, function(err, block) {
+            counter++;
+            if (block.transactions.length > 0) {
+            numOfBlocksWithTxs++;
+          }
           next(err, block);
         });
-      }, function(err, blocks) {
+      },
+        function(err, blocks) {
         callback(err, blocks);
       });
     }
@@ -37,7 +50,7 @@ router.get('/', function(req, res, next) {
     if (err) {
       return next(err);
     }
-    
+
     var txs = [];
     blocks.forEach(function(block) {
       block.transactions.forEach(function(tx) {
@@ -49,7 +62,7 @@ router.get('/', function(req, res, next) {
     });
     res.render('index', { blocks: blocks, txs: txs });
   });
-  
+
 });
 
 module.exports = router;
