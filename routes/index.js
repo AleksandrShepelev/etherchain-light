@@ -31,6 +31,9 @@ router.get('/', function(req, res, next) {
 
       async.whilst(
         function () {
+          console.log(counter);
+          console.log(numOfBlocksWithTxs);
+          console.log((lastBlock.number - counter < 0) || (numOfBlocksWithTxs > blockCount));
           return ((lastBlock.number - counter < 0) || (numOfBlocksWithTxs > blockCount))
         },
         function(next) {
