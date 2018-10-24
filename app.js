@@ -53,7 +53,6 @@ app.use('/accounts', accounts);
 app.use('/contract', contract);
 app.use('/signature', signature);
 app.use('/search', search);
-app.use('/txsblocks', txsblocks);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
