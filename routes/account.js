@@ -57,7 +57,7 @@ router.get('/:account', function(req, res, next) {
         data.isContract = true;
       }
 
-      addressLog.find({address: req.params.account}, {sort:{$natural:-1}}, function (err, transactions) {
+      addressLog.find({address: req.params.account}).sort({$natural:-1}).exec(function (err, transactions) {
         callback(err, transactions)
       });
 
