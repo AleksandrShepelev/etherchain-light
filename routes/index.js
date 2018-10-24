@@ -64,9 +64,7 @@ router.get('/txblocks', function(req, res, next) {
         callback(err, result);
       });
     }, function(lastBlock, callback) {
-      var blocks = [];
-
-      var blockCount = 10;
+      var blockCount = 10000;
 
       if (lastBlock.number - blockCount < 0) {
         blockCount = lastBlock.number + 1;
@@ -100,16 +98,7 @@ router.get('/txblocks', function(req, res, next) {
       return next(err);
     }
 
-    var txs = [];
-    blocks.forEach(function(block) {
-      block.transactions.forEach(function(tx) {
-        if (txs.length === 10) {
-          return;
-        }
-        txs.push(tx);
-      });
-    });
-    res.render('index', { blocks: blocks, txs: txs });
+    res.render('txblocks', { blocks: blocks });
   });
 
 });

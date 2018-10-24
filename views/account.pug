@@ -33,11 +33,14 @@ block content
         table.table
           thead
             tr
+              th Block
               th Type
               th Hash
             tbody
               for tx in account.txs
                 tr
                   td #{tx.type}
+                  td
+                    a(href="/block/" + tx.block)  #{tx.block}
                   td
                     a(href="/tx/" + tx.hash)  #{tx.hash}
