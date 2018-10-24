@@ -125,13 +125,15 @@ block content
         td Refund addresses:
           td
             for gamer in tx.refunders
-              a(href="/account/" + gamer) #{gamer} #{" "}
+              a(href="/account/" + gamer) #{gamer}
+              br
     if tx.abusers
       tr
         td Abusers addresses:
           td
             for gamer in tx.abusers
-              a(href="/account/" + gamer) #{gamer} #{" "}
+              a(href="/account/" + gamer) #{gamer}
+              br
     if tx.refundAmount
       tr
         td Amount of ClickCoins refunded:
