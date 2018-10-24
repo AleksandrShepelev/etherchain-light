@@ -99,7 +99,8 @@ block content
         td Gamers:
           td
             for gamer in tx.gamers
-              | a(href="/account/" + gamer) #{gamer}
+              a(href="/account/" + gamer) #{gamer}
+              br
     if tx.bet
       tr
         td Bet:
