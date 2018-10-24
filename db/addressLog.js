@@ -6,7 +6,8 @@ const AddressLogSchema = mongoose.Schema(
     address: { type: String, index: true },
     type: String,
     hash: String,
-    block: Number
+    block: Number,
+    timestamp: Date
   },
   {
     usePushEach: true
