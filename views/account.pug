@@ -39,8 +39,8 @@ block content
             tbody
               for tx in account.txs
                 tr
-                  td #{tx.type}
                   td
                     a(href="/block/" + tx.block)  #{tx.block}
+                  td #{tx.type}
                   td
                     a(href="/tx/" + tx.hash)  #{tx.hash}
