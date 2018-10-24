@@ -12,6 +12,11 @@ const contractAddress = "0xded9f8fd750a1251b232a6de833f9bd008ba09f8";
 
 const decoder = new InputDataDecoder(contractAbi);
 
+function formatAddr(addr) {
+  while (addr.length < 40) addr = "0" + addr;
+  addr = "0x" + addr;
+  return addr
+}
 
 router.get('/pending', function(req, res, next) {
 
@@ -132,7 +137,7 @@ router.get('/:tx', function(req, res, next) {
         tx.operation= "Create game";
         tx.gamers = [];
         for (var i=0; i<decoded.inputs[1].length; i++) {
-          tx.gamers.push( "0x" + decoded.inputs[1][i].toString(16));
+          tx.gamers.push(formatAddr(decoded.inputs[1][i].toString(16)));
         }
         tx.internalGameId = decoded.inputs[0];
         tx.bet = decoded.inputs[2].toString(10);
@@ -141,21 +146,21 @@ router.get('/:tx', function(req, res, next) {
         tx.operation = "Finish game";
         tx.gamers = [];
         for (var i=0; i<decoded.inputs[1].length; i++) {
-          tx.gamers.push( "0x" + decoded.inputs[1][i].toString(16));
+          tx.gamers.push(formatAddr(decoded.inputs[1][i].toString(16)));
         }
         tx.internalGameId = decoded.inputs[0];
         break;
       case "transfer":
         tx.operation = "Transfer coins";
         tx.sender = tx.from;
-        tx.recipient = "0x" + decoded.inputs[0].toString(16);
+        tx.recipient = formatAddr(decoded.inputs[0].toString(16));
         tx.coinsTransferred = decoded.inputs[1].toString(10);
         break;
     case "cancellationGame":
       tx.operation = "Cancel game";
       tx.gamers = [];
       for (var i=0; i<decoded.inputs[1].length; i++) {
-        tx.gamers.push( "0x" + decoded.inputs[1][i].toString(16));
+        tx.gamers.push(formatAddr(decoded.inputs[1][i].toString(16)));
       }
       tx.internalGameId = decoded.inputs[0];
       break;
@@ -167,13 +172,13 @@ router.get('/:tx', function(req, res, next) {
 
       tx.refunders = [];
        for (var i=0; i<decoded.inputs[1].length; i++) {
-         tx.refunders.push( "0x" + decoded.inputs[1][i].toString(16));
+         tx.refunders.push(formatAddr(decoded.inputs[1][i].toString(16)));
 
       }
       tx.abusers = [];
 
       for (var i=0; i<decoded.inputs[2].length; i++) {
-        tx.abusers.push( "0x" + decoded.inputs[1][i].toString(16));
+        tx.abusers.push(formatAddr(decoded.inputs[2][i].toString(16)));
 
       }
 
