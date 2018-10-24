@@ -153,15 +153,10 @@ router.get('/:tx', function(req, res, next) {
         break;
     case "cancellationGame":
       tx.operation = "Cancel game";
-      tx.gamers = decoded.inputs[1];
-      /*
+      tx.gamers = [];
       for (var i=0; i<decoded.inputs[1].length; i++) {
-        tx.gamers += "0x" + decoded.inputs[1][i].toString(16);
-        if (i !== decoded.inputs[1].length - 1) {
-          tx.gamers += ", "
-        }
+        tx.gamers.push( "0x" + decoded.inputs[1][i].toString(16));
       }
-      */
       tx.internalGameId = decoded.inputs[0];
       break;
 
@@ -170,24 +165,18 @@ router.get('/:tx', function(req, res, next) {
 
       tx.internalGameId = decoded.inputs[0];
 
-      tx.refunders = decoded.inputs[1];
-      /*
-      for (var i=0; i<decoded.inputs[1].length; i++) {
-        tx.refunders += "0x" + decoded.inputs[1][i].toString(16);
-        if (i !== decoded.inputs[1].length - 1) {
-          tx.refunders += ", "
-        }
+      tx.refunders = [];
+       for (var i=0; i<decoded.inputs[1].length; i++) {
+         tx.refunders.push( "0x" + decoded.inputs[1][i].toString(16));
+
       }
-      */
-      tx.abusers = decoded.inputs[2];
-      /*
+      tx.abusers = [];
+
       for (var i=0; i<decoded.inputs[2].length; i++) {
-        tx.abusers += "0x" + decoded.inputs[2][i].toString(16);
-        if (i !== decoded.inputs[2].length - 1) {
-          tx.abusers += ", "
-        }
+        tx.abusers.push( "0x" + decoded.inputs[1][i].toString(16));
+
       }
-      */
+
       tx.refundAmount = decoded.inputs[3].toString(10);
       tx.internalCaseId = decoded.inputs[4].toString();
 

@@ -99,7 +99,7 @@ block content
         td Gamers:
           td
             for gamer in tx.gamers
-              a(href="/account/" + gamer) #{nameformatter.format(gamer)} #{"       "}
+              a(href="/account/" + gamer) #{nameformatter.format(gamer)} #{" "}
     if tx.bet
       tr
         td Bet:
@@ -122,11 +122,15 @@ block content
     if tx.refunders
       tr
         td Refund addresses:
-        td #{tx.refunders}
+          td
+            for gamer in tx.refunders
+              a(href="/account/" + gamer) #{nameformatter.format(gamer)} #{" "}
     if tx.abusers
       tr
         td Abusers addresses:
-        td #{tx.abusers}
+          td
+            for gamer in tx.abusers
+              a(href="/account/" + gamer) #{nameformatter.format(gamer)} #{" "}
     if tx.refundAmount
       tr
         td Amount of ClickCoins refunded:
