@@ -130,29 +130,19 @@ router.get('/:tx', function(req, res, next) {
     switch (decoded.name) {
       case "createGame":
         tx.operation= "Create game";
-        tx.gamers = decoded.inputs[1];
-        /*
+        tx.gamers = [];
         for (var i=0; i<decoded.inputs[1].length; i++) {
-          tx.gamers += "0x" + decoded.inputs[1][i].toString(16);
-          if (i !== decoded.inputs[1].length - 1) {
-            tx.gamers += ", "
-          }
+          tx.gamers.push( "0x" + decoded.inputs[1][i].toString(16));
         }
-        */
         tx.internalGameId = decoded.inputs[0];
         tx.bet = decoded.inputs[2].toString(10);
         break;
       case "finishGame":
         tx.operation = "Finish game";
-        tx.gamers = decoded.inputs[1];
-        /*
+        tx.gamers = [];
         for (var i=0; i<decoded.inputs[1].length; i++) {
-          tx.gamers += "0x" + decoded.inputs[1][i].toString(16);
-          if (i !== decoded.inputs[1].length - 1) {
-            tx.gamers += ", "
-          }
+          tx.gamers.push( "0x" + decoded.inputs[1][i].toString(16));
         }
-        */
         tx.internalGameId = decoded.inputs[0];
         break;
       case "transfer":
