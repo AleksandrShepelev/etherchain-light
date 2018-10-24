@@ -23,7 +23,6 @@ router.get('/:account', function(req, res, next) {
 
   async.waterfall([
     function(callback) {
-      req.params.account = req.params.account.trim();
       contract.balanceOf.call(req.params.account, function (err, result) {
         callback(null, result);
       });
