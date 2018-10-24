@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var blockLog = require('../db/blockLog');
 var async = require('async');
 var Web3 = require('web3');
 
