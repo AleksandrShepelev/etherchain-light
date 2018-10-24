@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
+var test = require('./routes/test');
 var block = require('./routes/block');
 var tx = require('./routes/tx');
 var account = require('./routes/account');
@@ -49,6 +50,7 @@ app.locals.config = config;
 app.use('/', index);
 app.use('/block', block);
 app.use('/tx', tx);
+app.use('/test', test);
 app.use('/account', account);
 app.use('/accounts', accounts);
 app.use('/contract', contract);
