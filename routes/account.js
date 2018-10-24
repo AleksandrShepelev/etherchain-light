@@ -57,7 +57,7 @@ router.get('/:account', function(req, res, next) {
         data.isContract = true;
       }
 
-      addressLog.findMany({address: req.params.account}, function (err, transactions) {
+      addressLog.find({address: req.params.account}, function (err, transactions) {
         callback(err, transactions)
       });
 
