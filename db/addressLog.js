@@ -12,4 +12,4 @@ const AddressLogSchema = mongoose.Schema(
   }
 );
 
-module.exports = db.model("AddressLogSchema", AddressLogSchema);
+module.exports = mongoose.model("AddressLogSchema", AddressLogSchema);
