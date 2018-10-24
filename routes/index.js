@@ -66,7 +66,7 @@ router.get('/txsblocks', function (req, res, next) {
       });
     },
     function (blocks, callback) {
-      callback(blocks);
+      callback(null, blocks);
     }
   ], function (err, blocks) {
     if (err) {
