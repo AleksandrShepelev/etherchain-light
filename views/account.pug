@@ -34,6 +34,7 @@ block content
           thead
             tr
               th Block
+              th Time
               th Type
               th Hash
             tbody
@@ -41,6 +42,7 @@ block content
                 tr
                   td
                     a(href="/block/" + tx.block)  #{tx.block}
+                  td #{tx.timestamp}
                   td #{tx.type}
                   td
                     a(href="/tx/" + tx.hash)  #{tx.hash}
