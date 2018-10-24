@@ -4,7 +4,7 @@ var router = express.Router();
 var async = require('async');
 var Web3 = require('web3');
 
-router.get('/txblocks', function(req, res, next) {
+router.get('/txsblocks', function(req, res, next) {
 
   var config = req.app.get('config');
   var web3 = new Web3();
@@ -50,7 +50,7 @@ router.get('/txblocks', function(req, res, next) {
       return next(err);
     }
 
-    res.render('txblocks', { blocks: blocks });
+    res.render('txsblocks', { blocks: blocks });
   });
 
 });
