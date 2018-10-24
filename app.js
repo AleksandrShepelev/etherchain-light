@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var test = require('./routes/test');
 var block = require('./routes/block');
 var tx = require('./routes/tx');
 var account = require('./routes/account');
@@ -14,7 +13,6 @@ var accounts = require('./routes/accounts');
 var contract = require('./routes/contract');
 var signature = require('./routes/signature');
 var search = require('./routes/search');
-var txsblocks = require('./routes/txsblocks');
 
 var config = new(require('./config.js'))();
 
@@ -50,7 +48,6 @@ app.locals.config = config;
 app.use('/', index);
 app.use('/block', block);
 app.use('/tx', tx);
-app.use('/test', test);
 app.use('/account', account);
 app.use('/accounts', accounts);
 app.use('/contract', contract);
