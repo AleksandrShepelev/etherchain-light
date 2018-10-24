@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var db = mongoose.createConnection('localhost', 'cybe');
+var db = mongoose.connect('mongodb://localhost:27017/cybe');
 
 const AddressLogSchema = mongoose.Schema(
   {
