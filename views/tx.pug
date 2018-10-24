@@ -97,7 +97,9 @@ block content
     if tx.gamers
       tr
         td Gamers:
-        td #{tx.gamers}
+          td
+            for gamer in tx.gamers
+              a(href="/account/" + gamer) #{nameformatter.format(gamer) }
     if tx.bet
       tr
         td Bet:
@@ -105,11 +107,13 @@ block content
     if tx.sender
       tr
         td Sender address:
-        td #{tx.sender}
+        td
+          a(href="/account/" + tx.sender) #{tx.sender}
     if tx.recipient
       tr
         td Recipient address:
-        td #{tx.recipient}
+        td
+          a(href="/account/" + tx.recipient) #{tx.recipient}
     if tx.coinsTransferred
       tr
         td Amount of ClickCoins transferred:
