@@ -99,7 +99,7 @@ block content
         td Gamers:
           td
             for gamer in tx.gamers
-              a(href="/account/" + gamer) #{nameformatter.format(gamer)} {"   "}
+              a(href="/account/" + gamer) #{nameformatter.format(gamer)} #{"   "}
     if tx.bet
       tr
         td Bet:
