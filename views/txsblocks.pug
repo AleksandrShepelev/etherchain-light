@@ -6,12 +6,12 @@ block content
     thead
       tr
         th Number
-        th Timestamp
+        th Time
         th # Tx
     tbody
       for block in blocks
         tr
           td
             a(href="/block/" + block.number) #{block.number}
-          td #{moment.unix(block.timestamp).format()}
+          td #{block.timestamp}
           td #{block.txs}
