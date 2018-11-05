@@ -1,5 +1,5 @@
 module.exports = {
-  address: "0x3c23ff6639df3c1472cdcff9f7205ff9775d49d2",
+  address: "0xb9912686e85b638745b7b56f15bdd2202d30cbd9",
   abi:  [
     {
       "anonymous": false,
