@@ -62,5 +62,5 @@ block content
                     a(href="/account/" + event.addressFrom) #{event.addressFrom}
                   td
                     a(href="/account/" + event.addressTo) #{event.addressTo}
-                  td #{tx.value}
-                  td #{tx.fee}
+                  td #{event.value}
+                  td #{event.fee}
