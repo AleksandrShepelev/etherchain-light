@@ -19,14 +19,8 @@ block content
     ul.nav.nav-tabs(role='tablist')
       li.active(role='presentation')
         a(href='#transactions', aria-controls='transactions', role='tab', data-toggle='tab') Transactions
-      if account.isContract
-        li(role='presentation')
-          a(href='#code', aria-controls='code', role='tab', data-toggle='tab') Code
-      if account.source
-        li(role='presentation')
-          a(href='#source', aria-controls='source', role='tab', data-toggle='tab') Source
-        li(role='presentation')
-          a(href='#contractState', aria-controls='source', role='tab', data-toggle='tab') Contract State
+      li(role='presentation')
+        a(href='#events', aria-controls='events', role='tab', data-toggle='tab') Events
     .tab-content
       #transactions.tab-pane.active(role='tabpanel')
         h3 Recent Transactions
@@ -46,3 +40,27 @@ block content
                   td #{tx.type}
                   td
                     a(href="/tx/" + tx.hash)  #{tx.hash}
+      #events.tab-pane(role='tabpanel')
+        h3 Recent Events
+        table.table
+          thead
+            tr
+              th Block
+              th Tx Hash
+              th From
+              th To
+              th Value
+              th Fee
+            tbody
+              for event in account.events
+                tr
+                  td
+                    a(href="/block/" + event.height) #{event.height}
+                  td
+                    a(href="/tx/" + event.hash) #{event.hash}
+                  td
+                    a(href="/account/" + event.addressFrom) #{event.addressFrom}
+                  td
+                    a(href="/account/" + event.addressTo) #{event.addressTo}
+                  td #{tx.value}
+                  td #{tx.fee}

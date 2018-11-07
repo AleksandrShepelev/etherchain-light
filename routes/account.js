@@ -4,6 +4,7 @@ var clickcoin = require('../utils/clickcoin');
 var async = require('async');
 var Web3 = require('web3');
 var addressLog = require('../db/addressLog');
+var eventLog = require('../db/eventLog');
 
 
 router.get('/:account', function(req, res, next) {
@@ -58,10 +59,17 @@ router.get('/:account', function(req, res, next) {
       addressLog.find({address: req.params.account}).sort({block:-1}).exec(function (err, transactions) {
         callback(err, transactions)
       });
-
     }, function(txs, callback) {
         data.txs = txs;
         callback();
+    },
+    function (callback) {
+      eventLog.find({$or: [{addressFrom: req.params.account}, {addressTo: req.params.account}]}).sort({height: -1}).exec(function (err, events) {
+        callback(err, events)
+      })
+    }, function(events, callback) {
+      data.events = events;
+      callback();
     }
   ], function(err) {
     if (err) {
