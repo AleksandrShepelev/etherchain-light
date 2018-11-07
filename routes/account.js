@@ -55,7 +55,6 @@ router.get('/:account', function(req, res, next) {
       if (code !== "0x") {
         data.isContract = true;
       }
-
       addressLog.find({address: req.params.account}).sort({block:-1}).exec(function (err, transactions) {
         callback(err, transactions)
       });
@@ -69,6 +68,7 @@ router.get('/:account', function(req, res, next) {
       })
     }, function(events, callback) {
       data.events = events;
+      console.log(events);
       callback();
     }
   ], function(err) {

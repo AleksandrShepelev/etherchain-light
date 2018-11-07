@@ -5,7 +5,7 @@ const EventLogSchema = mongoose.Schema(
   {
     addressFrom: {type: String, index: true},
     addressTo: {type: String, index: true},
-    value: String,
+    value: Number,
     fee: Number,
     hash: String,
     height: Number
