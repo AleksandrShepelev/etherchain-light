@@ -101,6 +101,13 @@ block content
             for gamer in tx.gamers
               a(href="/account/" + gamer) #{gamer}
               br
+    if tx.winners
+      tr
+        td Winners:
+          td
+            for gamer in tx.winners
+              a(href="/account/" + gamer) #{gamer}
+              br
     if tx.bet
       tr
         td Bet:

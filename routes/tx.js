@@ -141,9 +141,9 @@ router.get('/:tx', function(req, res, next) {
         break;
       case "finishGame":
         tx.operation = "Finish game";
-        tx.gamers = [];
+        tx.winners = [];
         for (var i=0; i<decoded.inputs[1].length; i++) {
-          tx.gamers.push(formatAddr(decoded.inputs[1][i].toString(16)));
+          tx.winners.push(formatAddr(decoded.inputs[1][i].toString(16)));
         }
         tx.internalGameId = decoded.inputs[0];
         break;
