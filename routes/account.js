@@ -65,7 +65,6 @@ router.get('/:account', function(req, res, next) {
     function (callback) {
       console.log('debug');
       eventLog.find({$or: [{addressFrom: req.params.account}, {addressTo: req.params.account}]}).sort({height: -1}).exec(function (err, events) {
-        console.log(JSON.stringify(events, null, 2));
         callback(err, events)
       })
     }, function(events, callback) {
