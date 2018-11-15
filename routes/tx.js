@@ -99,7 +99,6 @@ router.get('/:tx', function(req, res, next) {
     },
     function (tx, receipt, traces, value, callback) {
       eventLog.find({hash: tx.hash}).sort({height: -1}).exec(function (err, events) {
-        console.log(events);
         callback(null, tx, receipt, traces, value, events)
       })
     },
@@ -111,8 +110,6 @@ router.get('/:tx', function(req, res, next) {
     if (err) {
       return next(err);
     }
-    console.log(tx.events);
-
     // Try to match the tx to a solidity function call if the contract source is available
     if (source) {
       tx.source = JSON.parse(source);
