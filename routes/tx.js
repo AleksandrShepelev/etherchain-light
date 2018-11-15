@@ -95,6 +95,15 @@ router.get('/:tx', function(req, res, next) {
       db.get(tx.to, function(err, value) {
         callback(null, tx, receipt, traces, value);
       });
+    },
+    function (tx, receipt, traces, value, callback) {
+      eventLog.find({hash: tx.hash}).sort({height: -1}).exec(function (err, events) {
+        callback(err, tx, receipt, traces, value, events)
+      })
+    },
+    function(tx, receipt, traces, value, events, callback) {
+      tx.events = events;
+      callback();
     }
   ], function(err, tx, receipt, traces, source) {
     if (err) {

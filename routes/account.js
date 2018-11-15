@@ -63,13 +63,11 @@ router.get('/:account', function(req, res, next) {
         callback();
     },
     function (callback) {
-      console.log('debug');
       eventLog.find({$or: [{addressFrom: req.params.account}, {addressTo: req.params.account}]}).sort({height: -1}).exec(function (err, events) {
         callback(err, events)
       })
     }, function(events, callback) {
       data.events = events;
-      console.log(events);
       callback();
     }
   ], function(err) {
