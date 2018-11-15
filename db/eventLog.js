@@ -8,7 +8,8 @@ const EventLogSchema = mongoose.Schema(
     value: Number,
     fee: Number,
     hash: String,
-    height: Number
+    height: Number,
+    time: Date
   },
   {
     usePushEach: true

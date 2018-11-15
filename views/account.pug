@@ -46,6 +46,7 @@ block content
           thead
             tr
               th Block
+              th Time
               th Tx Hash
               th From
               th To
@@ -56,6 +57,8 @@ block content
                 tr
                   td
                     a(href="/block/" + event.height) #{event.height}
+                  td
+                    #{event.time}
                   td
                     a(href="/tx/" + event.hash) #{event.hash}
                   td
