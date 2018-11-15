@@ -6,6 +6,7 @@ var Web3 = require('web3');
 var abi = require('ethereumjs-abi');
 var abiDecoder = require('abi-decoder');
 const InputDataDecoder = require('ethereum-input-data-decoder');
+var eventLog = require('../db/eventLog');
 
 const decoder = new InputDataDecoder(clickcoin.abi);
 
