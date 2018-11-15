@@ -104,7 +104,7 @@ router.get('/:tx', function(req, res, next) {
     },
     function(tx, receipt, traces, value, events, callback) {
       tx.events = events;
-      callback();
+      callback(null, tx, receipt, traces, value, events);
     }
   ], function(err, tx, receipt, traces, source) {
     if (err) {
