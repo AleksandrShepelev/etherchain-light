@@ -59,7 +59,7 @@ block content
                     a(href="/block/" + event.height) #{event.height}
                   td #{event.timestamp}
                   td
-                    a(href="/tx/" + event.hash) #{event.hash}
+                    a(href="/tx/" + event.hash) #{tx.hash.substr(0, 10)}...
                   td
                     a(href="/account/" + event.addressFrom) #{event.addressFrom}
                   td
