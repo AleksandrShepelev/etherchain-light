@@ -14,4 +14,4 @@ const AddressLogSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("AddressLogSchema", AddressLogSchema);
+module.exports = mongoose.model("AddressLog", AddressLogSchema);
