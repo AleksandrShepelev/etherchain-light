@@ -61,7 +61,7 @@ router.get('/txsblocks', function (req, res, next) {
 
   async.waterfall([
     function (callback) {
-      blockLog.find({}).sort({number: -1}).exec(function (err, blocks) {
+      blockLog.find({txs: {$gt: 0}}).sort({number: -1}).exec(function (err, blocks) {
         callback(err, blocks)
       });
     },
