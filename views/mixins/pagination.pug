@@ -5,27 +5,28 @@ mixin pagination(active, last)
     //- ellipsis - number to be replaced by ellipsis
     //- last - number after ellipsis
     .pagination
-
+        - var activeNum = Number(active)
+        - var lastNum = Number(last)
         //- prev arrow
-        - var prevPage = active - 1;
-        if (active !== 1)
-            a(href=`page=${Number(active)-1}` title='Prev page').pagination__prev.icon-pagination-prev ◀
+        if (activeNum !== 1)
+            a(href=`?page=${activeNum-1}` title='Prev page').pagination__prev.icon-pagination-prev ◀
         else
 
+        - var before = activeNum - 2 > 0 ? 2 : 2 - activeNum
         ul.pagination__list
             //- before ellipsis
-            - for (var index = active - 2; index <= active; index++)
-                if (index === active)
+            - for (var index = before; index <= activeNum; index++)
+                if (index === activeNum)
                     li.pagination__item.is-active
-                        a(href='?page=#{active}' title='Current page #{index}').pagination__number= index
+                        a(href=`?page=${Number(index)}` title=(`Current page ${index}`)).pagination__number= index
                 else
                     li.pagination__item
-                        a(href=('?page=#{index}') title=('Go to page #{index}')).pagination__number= index
+                        a(href=`?page=${Number(index)}` title=(`Go to page ${index}`)).pagination__number= index
 
-            - for (var index = (active + 1); index <= (active + 2); index++)
+            - for (var index = (activeNum + 1); index <= (activeNum + 2); index++)
                 li.pagination__item
-                    a(href=('?page=#{index}') title=('Go to pagе #{index}')).pagination__number= index
+                    a(href=`?page=${Number(index)}` title=(`Go to page ${index}`)).pagination__number= index
         //- next arrow
-        if (active !== last)
-            a(href=('?page=#{active+1}') title='Next page').pagination__next.icon-pagination-next ▶
+        if (activeNum !== lastNum)
+            a(href=`?page=${activeNum-1}` title='Next page').pagination__next.icon-pagination-next ▶
         else
