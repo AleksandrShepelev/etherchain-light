@@ -5,9 +5,13 @@ mixin pagination(active, last)
     //- ellipsis - number to be replaced by ellipsis
     //- last - number after ellipsis
     .pagination
+        console.log(active)
+        console.log(last)
+
         //- prev arrow
+
         if (active === "1")
-            a(href=("?page=" + active-1) title="Prev page").pagination__prev.icon-pagination-prev ◀
+            a(href=("?page=" + active - 1) title="Prev page").pagination__prev.icon-pagination-prev ◀
         else
 
         ul.pagination__list
