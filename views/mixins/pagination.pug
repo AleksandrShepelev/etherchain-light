@@ -32,3 +32,6 @@ mixin pagination(amount, active, ellipsis, last, arrows)
         if (arrows === arrows)
             a(href="#" title="Next page").pagination__next.icon-pagination-next ▶
         else
+
+include /views/mixins/pagination
++pagination(5, 3, 4, 9, arrows)
