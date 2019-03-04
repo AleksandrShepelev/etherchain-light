@@ -12,9 +12,11 @@ router.get('/:page?', function (req, res, next) {
   web3.setProvider(config.provider);
   const page = req.params.page ? req.params.page : 1;
   const pagesToSkip = page - 1;
+  console.log(page);
+  console.log(pagesToSkip);
   async.waterfall([
     function (callback) {
-      blockLog.find({txs: {$gt: 0}}).sort({number: -1}).limit(pageSize).skip(pagesToSkip * pageSize).exec(function (err, blocks) {
+      blockLog.find({txs: {$gt: 0}}).sort({number: -1}).skip(pagesToSkip * pageSize).limit(pageSize).exec(function (err, blocks) {
         callback(err, blocks)
       });
     },
