@@ -18,20 +18,17 @@ mixin pagination(active, last)
             //- before ellipsis
             - for (var index = before; index < activeNum; index++)
                 li.pagination__item
-                    a(href=`?page=${Number(index)}` title=(`Go to page ${index}`)).pagination__number= index
+                    a(href=`?page=${Number(index)}` title=(`Go to page ${index}`)).pagination__number=index
 
             li.pagination__item.is-active
-                a(href=`?page=${Number(activeNum)}` title=(`Current page ${index}`)).pagination__number= activeNum
+                a(href=`?page=${Number(activeNum)}` title=(`Current page ${index}`)).pagination__number=activeNum
 
             - for (var index = (activeNum + 1); index <= after; index++)
                 li.pagination__item
-                    a(href=`?page=${Number(index)}` title=(`Go to page ${index}`)).pagination__number= index
-
+                    a(href=`?page=${Number(index)}` title=(`Go to page ${index}`)).pagination__number=index
+                
             li.pagination__item
-                ...
-
-            li.pagination__item
-                a(href=`?page=${Number(lastNum)}` title=(`Current page ${lastNum}`)).pagination__number= lastNum
+                a(href=`?page=${Number(lastNum)}` title=(`Current page ${lastNum}`)).pagination__number=lastNum
 
         //- next arrow
         if (activeNum !== lastNum)
