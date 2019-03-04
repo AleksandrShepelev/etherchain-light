@@ -6,18 +6,13 @@ mixin pagination(active, last)
     //- last - number after ellipsis
     .pagination
         //- prev arrow
-        console.log(amount)
-        console.log(active)
-        console.log(last)
-        before = 2
-        after = 2
         if (active === 1)
             a(href=("?page=" + active-1) title="Prev page").pagination__prev.icon-pagination-prev ◀
         else
 
         ul.pagination__list
             //- before ellipsis
-            - for (var index = active - before; index <= active; index++)
+            - for (var index = active - 2; index <= active; index++)
                 if (index === active)
                     li.pagination__item.is-active
                         a(href=("?page=" + active) title=("Current page " + index)).pagination__number= index
@@ -25,7 +20,7 @@ mixin pagination(active, last)
                     li.pagination__item
                         a(href=("?page=" + index) title=("Go to page " + index)).pagination__number= index
 
-            - for (var index = active + 1; index <= active + after; index++)
+            - for (var index = active + 1; index <= active + 2; index++)
                 li.pagination__item
                     a(href=("?page=" + index) title=("Go to pagе " + index)).pagination__number= index
 
