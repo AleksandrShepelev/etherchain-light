@@ -8,7 +8,7 @@ mixin pagination(active, last)
 
         //- prev arrow
         - var prevPage = active - 1;
-        - var prevPageLink = `page=${active+1}`
+        - var prevPageLink = `page=${Number(active)+1}`
         if (active !== 1)
             a(href=prevPageLink title='Prev page').pagination__prev.icon-pagination-prev ◀
         else
