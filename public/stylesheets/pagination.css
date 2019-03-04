@@ -25,7 +25,13 @@
     font-size: 0;
 }
 
+
 .pagination__btn {
+    width: 14px;
+    height: 14px;
+}
+
+.pagination__input {
     width: 14px;
     height: 14px;
 }
