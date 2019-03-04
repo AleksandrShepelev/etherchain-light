@@ -26,3 +26,54 @@ pre {
   white-space: -o-pre-wrap;    /* Opera 7 */
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 }
+
+$c-pagination-item: #000;
+$c-pagination-item-active: #fff;
+$c-pagination-active: red;
+
+.pagination {
+
+&__item {
+     display: inline-block;
+     font-size: 16px;
+     border: 1px solid transparent;
+     margin-right: 2px;
+
+&.is-active {
+     border: 1px solid $c-pagination-active;
+     background: $c-pagination-active;
+     color: $c-pagination-item-active;
+ }
+&:hover,
+&:focus,
+&:active {
+     border: 1px solid $c-pagination-active;
+ }
+}
+
+&__number {
+     display: block;
+     padding: 2px 6px;
+     text-decoration: none;
+     color: inherit;
+ }
+
+&__list {
+     display: inline-block;
+     list-style-type: none;
+     padding: 0;
+     font-size: 0;
+ }
+
+&__prev,
+&__next {
+     display: inline-block;
+     text-decoration: none;
+
+&:hover,
+&:focus,
+&:active {
+     color: $c-pagination-active;
+ }
+}
+}
