@@ -5,13 +5,12 @@ var async = require('async');
 var Web3 = require('web3');
 const pageSize = 50;
 
-router.get('/:page?', function (req, res, next) {
+router.get('/', function (req, res, next) {
 
   var config = req.app.get('config');
   var web3 = new Web3();
   web3.setProvider(config.provider);
-  console.log(req.params);
-  const page = req.params.page ? req.params.page : 1;
+  const page = req.query.page ? req.query.page : 1;
   const pagesToSkip = page - 1;
   console.log(page);
   console.log(pagesToSkip);
