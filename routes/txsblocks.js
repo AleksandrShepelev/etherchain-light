@@ -10,7 +10,8 @@ router.get('/:page?', function (req, res, next) {
   var config = req.app.get('config');
   var web3 = new Web3();
   web3.setProvider(config.provider);
-  const pagesToSkip =  req.params.offset ? req.params.offset - 1 : 0;
+  const page = req.params.page ? req.params.page : 1;
+  const pagesToSkip = page - 1;
   async.waterfall([
     function (callback) {
       blockLog.find({txs: {$gt: 0}}).sort({number: -1}).limit(pageSize).skip(pagesToSkip * pageSize).exec(function (err, blocks) {
@@ -25,7 +26,7 @@ router.get('/:page?', function (req, res, next) {
       return next(err);
     }
 
-    res.render('txsblocks', {blocks: blocks});
+    res.render('txsblocks', {blocks: blocks, page: page});
   });
 
 });

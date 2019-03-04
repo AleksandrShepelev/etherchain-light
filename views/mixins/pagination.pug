@@ -1,5 +1,5 @@
 //- Pagination
-mixin pagination(amount, active, ellipsis, last, arrows)
+mixin pagination(amount, active, arrows)
     //- amount - amount of displayed numbers +1 prior ellipsis
     //- active - active number
     //- ellipsis - number to be replaced by ellipsis
@@ -17,16 +17,9 @@ mixin pagination(amount, active, ellipsis, last, arrows)
             if (index === active)
                 li.pagination__item.is-active
                     a(href=("?page=" + active) title="Current page #{index}").pagination__number= index
-            else if (index === ellipsis)
-                li.pagination__item
-                    a(href="#" title="Show more").pagination__number.is-collapsed ...
             else
                 li.pagination__item
                     a(href=("?page=" + index) title="Go to page #{index}").pagination__number= index
-            //- after ellipsis
-            - for (var index = amount + 1; index <= last; index++)
-            li.pagination__item
-                a(href=("?page=" + index) title="Go to pagе #{index}").pagination__number= index
 
         //- next arrow
         if (arrows === arrows)
