@@ -10,7 +10,7 @@ router.get('/:page?', function (req, res, next) {
   var config = req.app.get('config');
   var web3 = new Web3();
   web3.setProvider(config.provider);
-  console.log(req.params.page);
+  console.log(req.params);
   const page = req.params.page ? req.params.page : 1;
   const pagesToSkip = page - 1;
   console.log(page);
