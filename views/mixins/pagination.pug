@@ -46,6 +46,6 @@ mixin pagination(active, last)
         else
 
         br
-        form.pagination__frm
-            input.pagination__input(type=text, name='pageInput', value=activeNum, size=4)
-            a.btn.pagination__btn(href=`/txsblocks?page=${pageInput.value}`) Go
+        form.pagination__frm(action='/txsblocks', method='GET')
+            input.pagination__input(type=text, name='page', value=activeNum, size=4)
+            input.btn.pagination__btn(type='submit', value='Go')
