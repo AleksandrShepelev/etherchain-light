@@ -13,7 +13,7 @@ mixin pagination(active, last)
         else
 
         - var before = activeNum - 2 > 0 ? activeNum - 2 : 1
-        - var after = activeNum + 2 > last ? activeNum + 2 : last
+        - var after = activeNum + 2 <= last ? activeNum + 2 : last
         ul.pagination__list
             //- before ellipsis
             - for (var index = before; index < activeNum; index++)
@@ -23,7 +23,7 @@ mixin pagination(active, last)
             li.pagination__item.is-active
                 a(href=`?page=${Number(activeNum)}` title=(`Current page ${index}`)).pagination__number= activeNum
 
-            - for (var index = (activeNum + 1); index <= (activeNum + 2); index++)
+            - for (var index = (activeNum + 1); index <= after; index++)
                 li.pagination__item
                     a(href=`?page=${Number(index)}` title=(`Go to page ${index}`)).pagination__number= index
         //- next arrow
