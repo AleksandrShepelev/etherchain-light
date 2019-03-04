@@ -47,5 +47,5 @@ mixin pagination(active, last)
 
         br
         form.pagination__frm
-            input.pagination__input(type=text, name='page', pattern="[0-9]{,7}", value=activeNum, size=4)
-            a.btn.pagination__btn(href="/txsblocks/1") Go
+            input.pagination__input(type=text, name='pageInput', value=activeNum, size=4)
+            a.btn.pagination__btn(href=`/txsblocks?page=${pageInput.value}`) Go
