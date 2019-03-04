@@ -28,6 +28,9 @@
     display: inline-block;
     text-decoration: none;
 }
+.pagination__prev.icon-pagination-prev, .pagination__next.icon-pagination-next {
+    padding-bottom: 2px;
+}
 .pagination__prev:hover, .pagination__next:hover, .pagination__prev:focus, .pagination__next:focus, .pagination__prev:active, .pagination__next:active {
     color: #00B7FF;
 }

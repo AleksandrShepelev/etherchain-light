@@ -17,7 +17,7 @@ mixin pagination(active, last)
         ul.pagination__list
             if (before > 1)
                 li.pagination__item
-                    a(href=`?page=${1}` title=(`Go to page ${1}`)).pagination__number=lastNum
+                    a(href=`?page=${1}` title=(`Go to page ${1}`)).pagination__number=1
 
             if (before > 2)
                 li.pagination__item ...
