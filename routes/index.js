@@ -52,30 +52,4 @@ router.get('/', function (req, res, next) {
 
 });
 
-
-router.get('/txsblocks', function (req, res, next) {
-
-  var config = req.app.get('config');
-  var web3 = new Web3();
-  web3.setProvider(config.provider);
-
-  async.waterfall([
-    function (callback) {
-      blockLog.find({txs: {$gt: 0}}).sort({number: -1}).exec(function (err, blocks) {
-        callback(err, blocks)
-      });
-    },
-    function (blocks, callback) {
-      callback(null, blocks);
-    }
-  ], function (err, blocks) {
-    if (err) {
-      return next(err);
-    }
-
-    res.render('txsblocks', {blocks: blocks});
-  });
-
-});
-
 module.exports = router;
