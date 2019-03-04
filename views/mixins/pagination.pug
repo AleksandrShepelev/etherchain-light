@@ -13,12 +13,12 @@ mixin pagination(amount, active, last)
         ul.pagination__list
             //- before ellipsis
             - for (var index = 1; index <= amount; index++)
-            if (index === active)
-                li.pagination__item.is-active
-                    a(href=("?page=" + active) title=("Current page " + index)).pagination__number= index
-            else
-                li.pagination__item
-                    a(href=("?page=" + index) title=("Go to page " + index)).pagination__number= index
+                if (index === active)
+                    li.pagination__item.is-active
+                        a(href=("?page=" + active) title=("Current page " + index)).pagination__number= index
+                else
+                    li.pagination__item
+                        a(href=("?page=" + index) title=("Go to page " + index)).pagination__number= index
 
         //- next arrow
         if (active === last)
