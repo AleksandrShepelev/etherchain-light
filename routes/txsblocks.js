@@ -26,7 +26,7 @@ router.get('/', function (req, res, next) {
       return next(err);
     }
 
-    res.render('txsblocks', {blocks: blocks, page: page});
+    res.render('txsblocks', {blocks: blocks, page: page, pages: 20});
   });
 
 });
