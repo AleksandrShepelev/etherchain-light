@@ -31,7 +31,7 @@ router.get('/', function (req, res, next) {
       return next(err);
     }
 
-    res.render('txsblocks', {blocks: blocks, page: page, pages: blocksCount});
+    res.render('txsblocks', {blocks: blocks, page: page, pages: Math.ceil(blocksCount / pageSize)});
   });
 
 });
