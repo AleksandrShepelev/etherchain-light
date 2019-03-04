@@ -27,8 +27,6 @@ mixin pagination(active, last)
                 li.pagination__item
                     a(href=`?page=${Number(index)}` title=(`Go to page ${index}`)).pagination__number= index
 
-            ...
-            ...
             li.pagination__item
                 a(href=`?page=${Number(lastNum)}` title=(`Current page ${lastNum}`)).pagination__number= lastNum
 
