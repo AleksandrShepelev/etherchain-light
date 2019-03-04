@@ -12,8 +12,6 @@ router.get('/', function (req, res, next) {
   web3.setProvider(config.provider);
   const page = req.query.page ? req.query.page : 1;
   const pagesToSkip = page - 1;
-  console.log(page);
-  console.log(pagesToSkip);
   async.waterfall([
     function (callback) {
       blockLog.find({txs: {$gt: 0}}).sort({number: -1}).skip(pagesToSkip * pageSize).limit(pageSize).exec(function (err, blocks) {
