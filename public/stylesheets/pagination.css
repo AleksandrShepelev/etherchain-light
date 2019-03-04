@@ -5,12 +5,12 @@
     margin-right: 2px;
 }
 .pagination__item.is-active {
-    border: 1px solid red;
-    background: red;
+    border: 1px solid #00B7FF;
+    background: #00B7FF;
     color: #fff;
 }
 .pagination__item:hover, .pagination__item:focus, .pagination__item:active {
-    border: 1px solid red;
+    border: 1px solid #00B7FF;
 }
 .pagination__number {
     display: block;
@@ -29,5 +29,5 @@
     text-decoration: none;
 }
 .pagination__prev:hover, .pagination__next:hover, .pagination__prev:focus, .pagination__next:focus, .pagination__prev:active, .pagination__next:active {
-    color: red;
+    color: #00B7FF;
 }
