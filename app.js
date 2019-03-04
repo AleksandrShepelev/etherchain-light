@@ -13,6 +13,7 @@ var accounts = require('./routes/accounts');
 var contract = require('./routes/contract');
 var signature = require('./routes/signature');
 var search = require('./routes/search');
+var txsblocks = require('./routes/txsblocks');
 
 var config = new(require('./config.js'))();
 
