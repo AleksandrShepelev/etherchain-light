@@ -27,6 +27,9 @@
 
 
 .btn.pagination__btn {
+    color: #333333;
+    background-color: #e7e7e7;
+    border-color: #cccccc;
 }
 
 .pagination__input {
