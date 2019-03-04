@@ -26,14 +26,13 @@
 }
 
 
-.pagination__btn {
-    width: 14px;
-    height: 14px;
+.btn.pagination__btn {
 }
 
 .pagination__input {
-    width: 14px;
-    height: 14px;
+    width: 40px;
+    height: 20px;
+    padding-left: 5px;
 }
 
 .pagination__prev, .pagination__next {
