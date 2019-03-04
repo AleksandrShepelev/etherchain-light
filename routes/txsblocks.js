@@ -19,14 +19,19 @@ router.get('/', function (req, res, next) {
       });
     },
     function (blocks, callback) {
-      callback(null, blocks);
+      blockLog.find({txs: {$gt: 0}}).count().exec(function (err, blocksCount) {
+        callback(err, blocks, blocksCount)
+      });
+    },
+    function (blocks, blocksCount, callback) {
+      callback(null, blocks, blocksCount)
     }
-  ], function (err, blocks) {
+  ], function (err, blocks, blocksCount) {
     if (err) {
       return next(err);
     }
 
-    res.render('txsblocks', {blocks: blocks, page: page, pages: 20});
+    res.render('txsblocks', {blocks: blocks, page: page, pages: blocksCount});
   });
 
 });
