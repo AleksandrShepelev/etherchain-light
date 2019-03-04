@@ -44,3 +44,6 @@ mixin pagination(active, last)
         if (activeNum !== lastNum)
             a(href=`?page=${activeNum+1}` title='Next page').pagination__next.icon-pagination-next ▶
         else
+
+        input(type=text, name='page', pattern="[0-9]{,7}")
+        a.btn.btn-default(href="/txsblocks/1") Go to page
