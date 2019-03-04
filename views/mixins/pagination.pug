@@ -12,7 +12,8 @@ mixin pagination(active, last)
             a(href=`?page=${activeNum-1}` title='Prev page').pagination__prev.icon-pagination-prev ◀
         else
 
-        - var before = activeNum - 2 > 0 ? 2 : 2 - activeNum
+        - var before = activeNum - 2 > 0 ? activeNum - 2 : activeNum - 1
+        - var after = activeNum + 2 > last ? activeNum + 2 : last
         ul.pagination__list
             //- before ellipsis
             - for (var index = before; index <= activeNum; index++)
