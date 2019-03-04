@@ -46,5 +46,6 @@ mixin pagination(active, last)
         else
 
         br
-        input(type=text, name='page', pattern="[0-9]{,7}", value=activeNum, size=4)
-        a.btn.btn-default(href="/txsblocks/1") Go to page
+        form
+            input(type=text, name='page', pattern="[0-9]{,7}", value=activeNum, size=4)
+            a.btn.btn-default(href="/txsblocks/1") Go to page
