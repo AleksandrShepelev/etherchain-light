@@ -11,7 +11,7 @@ mixin pagination(active, last)
         console.log(last)
         before = 2
         after = 2
-        if (active == 1)
+        if (active === 1)
             a(href=("?page=" + active-1) title="Prev page").pagination__prev.icon-pagination-prev ◀
         else
 
@@ -30,6 +30,6 @@ mixin pagination(active, last)
                     a(href=("?page=" + index) title="Go to pagе " + index)).pagination__number= index
 
         //- next arrow
-        if (active == last)
+        if (active === last)
             a(href=("?page=" + active-1) title="Next page").pagination__next.icon-pagination-next ▶
         else
