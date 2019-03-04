@@ -20,7 +20,7 @@ mixin pagination(active, last)
                     li.pagination__item
                         a(href=("?page=" + index) title=("Go to page " + index)).pagination__number= index
 
-            - for (var index = active + 1; index <= active + 2; index++)
+            - for (var index = (active + 1); index <= (active + 2); index++)
                 li.pagination__item
                     a(href=("?page=" + index) title=("Go to pagе " + index)).pagination__number= index
 
