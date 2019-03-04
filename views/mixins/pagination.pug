@@ -8,7 +8,7 @@ mixin pagination(amount, active, ellipsis, last, arrows)
     .pagination
         //- prev arrow
         if (arrows === arrows)
-            a(href="#" title="Prev page").pagination__prev.icon-pagination-prev ◀
+            a(href=("?page=" + active-1) title="Prev page").pagination__prev.icon-pagination-prev ◀
         else
 
         ul.pagination__list
@@ -16,19 +16,19 @@ mixin pagination(amount, active, ellipsis, last, arrows)
             - for (var index = 1; index <= amount; index++)
             if (index === active)
                 li.pagination__item.is-active
-                    a(href="#" title="Current page #{index}").pagination__number= index
+                    a(href=("?page=" + active) title="Current page #{index}").pagination__number= index
             else if (index === ellipsis)
                 li.pagination__item
                     a(href="#" title="Show more").pagination__number.is-collapsed ...
             else
                 li.pagination__item
-                    a(href="#" title="Go to page #{index}").pagination__number= index
+                    a(href=("?page=" + index) title="Go to page #{index}").pagination__number= index
             //- after ellipsis
             - for (var index = amount + 1; index <= last; index++)
             li.pagination__item
-                a(href="#" title="Go to pagе #{index}").pagination__number= index
+                a(href=("?page=" + index) title="Go to pagе #{index}").pagination__number= index
 
         //- next arrow
         if (arrows === arrows)
-            a(href="#" title="Next page").pagination__next.icon-pagination-next ▶
+            a(href=("?page=" + active-1) title="Next page").pagination__next.icon-pagination-next ▶
         else
