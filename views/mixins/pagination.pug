@@ -15,7 +15,13 @@ mixin pagination(active, last)
         - var before = activeNum - 2 > 0 ? activeNum - 2 : 1
         - var after = activeNum + 2 <= last ? activeNum + 2 : last
         ul.pagination__list
-            //- before ellipsis
+            if (before > 1)
+                li.pagination__item
+                    a(href=`?page=${1}` title=(`Go to page ${1}`)).pagination__number=lastNum
+
+            if (before > 2)
+                li.pagination__item ...
+
             - for (var index = before; index < activeNum; index++)
                 li.pagination__item
                     a(href=`?page=${Number(index)}` title=(`Go to page ${index}`)).pagination__number=index
@@ -32,7 +38,7 @@ mixin pagination(active, last)
 
             if (after < lastNum)
                 li.pagination__item
-                    a(href=`?page=${Number(lastNum)}` title=(`Current page ${lastNum}`)).pagination__number=lastNum
+                    a(href=`?page=${Number(lastNum)}` title=(`Go to page ${lastNum}`)).pagination__number=lastNum
 
         //- next arrow
         if (activeNum !== lastNum)
