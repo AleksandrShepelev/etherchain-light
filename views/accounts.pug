@@ -13,6 +13,6 @@ block content
         tr
           td 
             a(href="/account/" + account.address) #{nameformatter.format(account.address)}
-          td #{account.type}
           td #{account.balance}
-  a.btn.btn-default(href="/accounts/" + lastAccount) Next Page
+  include mixins/pagination
+  +pagination(page, pages, '/accounts')

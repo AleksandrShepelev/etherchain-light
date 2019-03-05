@@ -1,9 +1,8 @@
 //- Pagination
-mixin pagination(active, last)
-    //- amount - amount of displayed numbers +1 prior ellipsis
-    //- active - active number
-    //- ellipsis - number to be replaced by ellipsis
-    //- last - number after ellipsis
+mixin pagination(active, last, url)
+    //- active - active page
+    //- last - last page
+    //- url - page url
     .pagination
         - var activeNum = Number(active)
         - var lastNum = Number(last)
@@ -41,11 +40,11 @@ mixin pagination(active, last)
                     a(href=`?page=${Number(lastNum)}` title=(`Go to page ${lastNum}`)).pagination__number=lastNum
 
         //- next arrow
-        if (activeNum !== lastNum)
+        if (activeNum !== lastNum && lastNum > 0)
             a(href=`?page=${activeNum+1}` title='Next page').pagination__next.icon-pagination-next ▶
         else
 
         br
-        form.pagination__frm(action='/txsblocks', method='GET')
+        form.pagination__frm(action=url, method='GET')
             input.pagination__input(type=text, name='page', value=activeNum, size=4)
             input.btn.pagination__btn(type='submit', value='Go')
